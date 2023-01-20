@@ -1,0 +1,27 @@
+body{
+    margin: 0px;
+    background-color: rgb(30, 30, 30);
+
+}
+textarea{
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+}
+red{
+    color: red;
+}
+blue{
+    color: blue;
+}
+#demo{
+    background:none;
+    color: white;
+    font-family: Consolas,'Courier New', monospace;
+    text-transform: none;
+    font-size: 14px;
+    word-spacing: normal;
+    line-height: 19px;
+}
