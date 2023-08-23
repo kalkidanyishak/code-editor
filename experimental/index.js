@@ -9,23 +9,13 @@ code.addEventListener('submit', ev => ev.preventDefault())
 
 let keys = (val) => `<span class='keys'>${val}</span>`
 
-let handler = {
-    set: (target, prop, val) => {
-        console.log(target[prop])
-    }
-}
-let inputProxy = new Proxy(input, handler)
-
-
 input.addEventListener('keydown', ev => {
     if (ev.key == 'Enter') {
         ev.target.value += '*'
-        inputProxy.value = '*'
     }
 })
 
 let keywordsPattern = patternCreator(keywords)
-
 
 input.addEventListener('input', ev => {
 
