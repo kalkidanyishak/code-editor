@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            background-color: rgb(10, 20, 20);
+            color: rgba(255, 255, 255, 0.818);
+        }
+
+        .p {
+            padding: 5px;
+            font-weight: 530;
+        }
+
+        blue {
+            color: rgb(177, 177, 239);
+            margin-right: 4px;
+            line-height: 25px;
+        }
+
+        equal {
+            margin-left: 3px;
+            color: rgb(255, 172, 172);
+        }
+
+        equal::before {
+            content: '=';
+            display: inline-block;
+            padding-right: 3px;
+            color: blue;
+        }
+    </style>
+    <div>
+
+        <div class="p" id="display">
+
+        </div>
+        <input type="text" id="inputbox">
+    </div>
+    <script>
+        let inputBox = document.getElementById('inputbox');
+        let display = document.getElementById('display');
+
+        let proxy = new Proxy({ inputValue: "" }, {
+            set(target, p, newValue) {
+                if (p == 'inputValue') {
+                    display.innerHTML = newValue;
+                }
+            }
+        })
+
+        const changeHandler = (el=inputBox) => {
+            proxy.inputValue = el.value
+                .replaceAll('let ', '<blue>let</blue>')
+                .replaceAll('=', '<equal>')
+                .replaceAll(';', '<blue>;</blue></equal><br/>')
+        }
+
+        const animate=()=>{
+            requestAnimationFrame(animate)
+            changeHandler()
+        }
+        animate()
+        
+
+
+    </script>
+</body>
+
+</html>
